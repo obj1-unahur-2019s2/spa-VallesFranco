@@ -1,8 +1,16 @@
 import personas.*
 
 object spa {
+var recordarPersona = 0	
 	method atender(persona) {
-		// hay que hacer que la persona reciba masajes y se dé un baño de vapor
-		// despues, agregar el premio para el que vuelve enseguida
+		if (recordarPersona >= 1) {
+			persona.recibirMasajes()
+			persona.darseUnBanioDeVapor()
+			persona.recibirMasajes()
+		} else {
+		persona.recibirMasajes()
+		persona.darseUnBanioDeVapor()
+		recordarPersona += 1
+		}		
 	}
 }
