@@ -1,16 +1,11 @@
 import personas.*
 
 object spa {
-var recordarPersona = 0	
+var ultimaPersona 
 	method atender(persona) {
-		if (recordarPersona >= 1) {
-			persona.recibirMasajes()
-			persona.darseUnBanioDeVapor()
-			persona.recibirMasajes()
-		} else {
+		if (ultimaPersona == persona) {	persona.recibirMasajes() }  
 		persona.recibirMasajes()
 		persona.darseUnBanioDeVapor()
-		recordarPersona += 1
-		}		
+		ultimaPersona = persona				
 	}
 }

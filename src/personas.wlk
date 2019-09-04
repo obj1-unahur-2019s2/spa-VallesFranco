@@ -16,7 +16,7 @@ object bruno {
 	method tieneSed() { return tieneSed }
 	method peso() { return peso }	
 	method recibirMasajes() { esFeliz = true }
-	method darseUnBanioDeVapor() { peso -= 500 ; tieneSed = true }
+	method darseUnBanioDeVapor() { peso -= 500; tieneSed = true }
 	method tomarAgua() { tieneSed = false }
 	method comerFideos() { peso += 250; tieneSed = true }
 	method correr() { peso -= 300 }
@@ -34,28 +34,15 @@ object ramiro {
 	var pielGrasosa = false
 	
 	method recibirMasajes() {
-		if (contractura >= 2) {
-			contractura -= 2
-		} else {
-			contractura == contractura		
+		contractura -= 2
+		if (contractura < 0) {
+			contractura = 0
 		}
 	}
 	method darseUnBanioDeVapor() { pielGrasosa = false }
 	method comerseUnBigMac() { pielGrasosa = true }
-	method bajarALaFosa() { pielGrasosa = true
-		if (contractura <= 1) {
-			contractura += 1
-		} else {
-			contractura == contractura		
-		}
-	}
-	method jugarAlPaddle() { 
-		if (contractura <= 3) {
-			contractura += 3
-		} else {
-			contractura == contractura		
-		}
-	}
+	method bajarALaFosa() { pielGrasosa = true; contractura += 1 }
+	method jugarAlPaddle() { contractura += 3 }
 	method diaDeTrabajo() { 
 		self.bajarALaFosa()
 		self.comerseUnBigMac()
