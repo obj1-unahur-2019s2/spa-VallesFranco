@@ -1,0 +1,46 @@
+import personas.*
+import spa.*
+
+describe "Ramiro y el spa" {
+
+	test "Ramiro empieza sin estar contracturado y sin tener la piel grasosa" {
+		assert.notThat(ramiro.estaContracturado())
+		assert.notThat(ramiro.tieneLaPielGrasosa())
+		assert.equals(0,ramiro.nivelDeContractura())
+	}
+	
+	test "Ramiro es atendido en el spa, 1 vez, habiendo hecho el día de trabajo" {
+		ramiro.diaDeTrabajo()
+		spa.atender(ramiro)
+		assert.notThat(ramiro.estaContracturado())
+		assert.notThat(ramiro.tieneLaPielGrasosa())
+		assert.equals(0,ramiro.nivelDeContractura())
+	}
+	
+	test "Ramiro es atendido en el spa, 2 veces seguidas, habiendo jugado al paddle y hecho el día de trabajo" {
+		ramiro.jugarAlPaddle()
+		ramiro.diaDeTrabajo()
+		assert.that(ramiro.tieneLaPielGrasosa())
+		assert.equals(5,ramiro.nivelDeContractura())
+		assert.that(ramiro.estaContracturado())
+		spa.atender(ramiro)
+		spa.atender(ramiro)
+		assert.notThat(ramiro.tieneLaPielGrasosa())
+		assert.equals(0,ramiro.nivelDeContractura())
+		assert.notThat(ramiro.estaContracturado())			
+	}
+	
+	test "Ramiro es atendido en el spa, 2 veces seguidas, habiendo jugado al paddle 2 veces y hecho el día de trabajo" {
+		ramiro.jugarAlPaddle()
+		ramiro.diaDeTrabajo()
+		ramiro.jugarAlPaddle()
+		assert.that(ramiro.tieneLaPielGrasosa())
+		assert.equals(8,ramiro.nivelDeContractura())
+		assert.that(ramiro.estaContracturado())
+		spa.atender(ramiro)
+		spa.atender(ramiro)
+		assert.notThat(ramiro.tieneLaPielGrasosa())
+		assert.equals(2,ramiro.nivelDeContractura())
+		assert.that(ramiro.estaContracturado())
+	}
+}

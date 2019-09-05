@@ -1,3 +1,4 @@
+
 object olivia {
 	var concentracion = 6
 	
@@ -33,6 +34,14 @@ object ramiro {
 	var contractura = 0 
 	var pielGrasosa = false
 	
+	method estaContracturado() { return contractura >= 1 }
+	method nivelDeContractura() { 
+		if (contractura < 0) {
+			contractura = 0
+		} 
+		return contractura
+	}
+	method tieneLaPielGrasosa() { return pielGrasosa }
 	method recibirMasajes() {
 		contractura -= 2
 		if (contractura < 0) {
