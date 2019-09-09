@@ -1,0 +1,35 @@
+import personas.*
+import spa.*
+
+describe "Olivia y el spa" {
+
+	test "Olivia empieza con 6 de concentración" {
+		assert.equals(6,olivia.gradoDeConcentracion())
+	}
+
+	test "Olivia es atendida en el spa, 1 vez, sin discutir" {
+		spa.atender(olivia)
+		assert.equals(9,olivia.gradoDeConcentracion())
+	}
+	
+	test "Olivia es atendida en el spa, 2 veces seguidas, habiendo discutido 3 veces" {
+		olivia.discutir()
+		olivia.discutir()
+		olivia.discutir()
+		spa.atender(olivia)
+		spa.atender(olivia)
+		assert.equals(12,olivia.gradoDeConcentracion())
+	}
+	
+	test "Olivia es atendida en el spa, 2 veces seguidas, habiendo discutido 6 veces" {
+		olivia.discutir()
+		olivia.discutir()
+		olivia.discutir()
+		olivia.discutir()
+		olivia.discutir()
+		olivia.discutir()
+		spa.atender(olivia)
+		spa.atender(olivia)
+		assert.equals(9,olivia.gradoDeConcentracion())
+	}
+}

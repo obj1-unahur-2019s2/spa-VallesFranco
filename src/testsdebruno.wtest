@@ -1,0 +1,48 @@
+import personas.*
+import spa.*
+
+describe "Bruno y el spa" {	
+		
+	test "Bruno empieza siendo feliz, sin sed y con un peso de 55kg (55000)" {
+		assert.that(bruno.esFeliz())	
+		assert.notThat(bruno.tieneSed())
+		assert.equals(55000,bruno.peso())		
+	}
+	
+	test "Bruno es atendido en el spa, 1 vez, habiendo visto el noticiero antes, después toma agua" {
+		bruno.verElNoticiero()
+		assert.notThat(bruno.esFeliz())
+		assert.notThat(bruno.tieneSed())
+		spa.atender(bruno)
+		assert.that(bruno.esFeliz())
+		assert.that(bruno.tieneSed())
+		assert.equals(54500,bruno.peso())
+		bruno.tomarAgua()
+		assert.notThat(bruno.tieneSed())
+	}
+	
+	test "Bruno es atendido en el spa, 2 veces seguidas, habiendo comido fideos 2 veces antes" {
+		bruno.comerFideos()
+		bruno.comerFideos()
+		assert.that(bruno.tieneSed())
+		assert.equals(55500,bruno.peso())
+		spa.atender(bruno) 
+		spa.atender(bruno)
+		assert.that(bruno.tieneSed())
+		assert.equals(54500,bruno.peso())				
+	}
+	
+	test "Bruno es atendido en el spa, 2 veces seguidas, habiendo hecho el mediodia en casa, y esta perfecto" {
+		bruno.mediodiaEnCasa()
+		assert.notThat(bruno.tieneSed())
+		assert.notThat(bruno.esFeliz())
+		assert.equals(55250,bruno.peso())
+		spa.atender(bruno)
+		spa.atender(bruno)
+		assert.that(bruno.tieneSed())
+		assert.that(bruno.esFeliz())
+		assert.equals(54250,bruno.peso())
+		bruno.tomarAgua()
+		assert.that(bruno.estaPerfecto())		
+	} 	
+}
